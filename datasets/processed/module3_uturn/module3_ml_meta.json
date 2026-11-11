@@ -1,0 +1,26 @@
+{
+  "rows": 1097,
+  "positives": 612,
+  "negatives": 485,
+  "features": [
+    "n_frames",
+    "duration_frames",
+    "x_range",
+    "y_range",
+    "mean_step",
+    "std_step",
+    "max_step",
+    "mean_speed",
+    "std_speed",
+    "max_abs_dheading",
+    "sum_abs_dheading",
+    "mean_abs_dheading",
+    "path_length",
+    "displacement",
+    "tortuosity",
+    "turn_intensity"
+  ],
+  "label_source": "NGSIM heading-reversal heuristic (uturn_candidate)",
+  "feature_source": "NGSIM trajectory geometry/kinematics",
+  "note": "U-turn candidates from abs heading change; refine later with SUMO/inD if available"
+}

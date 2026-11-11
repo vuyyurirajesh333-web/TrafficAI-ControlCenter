@@ -1,0 +1,10 @@
+{
+  "model": "Random_Forest",
+  "category": "Base ML",
+  "module": "module2_breakdown",
+  "accuracy": 0.9822820694542878,
+  "precision": 0.8493150684931506,
+  "recall": 0.9763779527559056,
+  "f1": 0.9084249084249084,
+  "roc_auc": 0.997401390830819
+}

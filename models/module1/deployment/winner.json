@@ -1,0 +1,8 @@
+{
+  "module": "module1",
+  "model_key": "TCN",
+  "artifact_relpath": "dl/TCN.pt",
+  "selection_rule": "best_validation_f1_then_pr_auc_then_lower_latency",
+  "selected_on": "validation_only",
+  "schema_id": "module1_bus_priority_v1"
+}

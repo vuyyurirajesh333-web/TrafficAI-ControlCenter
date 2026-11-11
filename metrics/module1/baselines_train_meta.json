@@ -1,0 +1,21 @@
+{
+  "data_file": "/content/drive/MyDrive/TrafficAI_ControlCenter/datasets/processed/module1_bus/module1_ml_table.parquet",
+  "n_train": 335562,
+  "n_test": 83891,
+  "features": [
+    "dist_to_junction_m",
+    "speed_mps",
+    "eta_sec",
+    "lateness_sec",
+    "t_sec",
+    "direction_up",
+    "node",
+    "route_code"
+  ],
+  "label_map": {
+    "NONE": 0,
+    "EXTEND_GREEN": 1,
+    "TRUNCATE_RED": 2
+  },
+  "note": "Trained on real Delhi bus node logs joined to GTFS; labels from rule engine on real features"
+}

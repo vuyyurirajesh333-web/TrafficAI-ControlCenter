@@ -1,0 +1,148 @@
+{
+  "schema_id": "module2_breakdown_v1",
+  "module": "module2",
+  "version": "1.0.0",
+  "frozen_in": "PHASE_A",
+  "task_type": "binary_suspected_abnormal_stop",
+  "label_policy": {
+    "primary": "aicity2021_t4_anomaly_interval_associated_to_track_windows",
+    "demo_supplement": "human_annotated_sample_video_events",
+    "forbidden": [
+      "Do not train on has_any_anomaly_in_video",
+      "Do not train on rule_stop_hint if it equals the label definition",
+      "Do not label every stationary vehicle as breakdown",
+      "Do not reuse quarantined module2_ml_table for reported metrics"
+    ],
+    "label_name": "y_abnormal_stop",
+    "label_values": {
+      "0": "NORMAL_OR_EXPECTED_STOP",
+      "1": "SUSPECTED_ABNORMAL_STOP"
+    },
+    "label_notes": "AI City intervals are scene-level anomalies; track association is proxy event-level GT and must be documented as such"
+  },
+  "split_policy": {
+    "method": "GroupKFold_or_GroupShuffleSplit",
+    "group_keys": ["video_id"],
+    "forbidden": "random_row_split"
+  },
+  "row_grain": "one_row_per_track_window",
+  "identity_columns": [
+    "sample_id",
+    "video_id",
+    "track_id",
+    "window_start_sec",
+    "window_end_sec",
+    "junction_id",
+    "label_source"
+  ],
+  "model_input_features": [
+    {
+      "name": "frames",
+      "dtype": "int",
+      "required": true
+    },
+    {
+      "name": "stationary_ratio",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "max_speed",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "last_speed",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "mean_recent_speed",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "stationary_duration_sec",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "moving_frames",
+      "dtype": "int",
+      "required": true
+    },
+    {
+      "name": "was_moving",
+      "dtype": "int",
+      "required": true,
+      "range": [0, 1]
+    },
+    {
+      "name": "currently_stopped",
+      "dtype": "int",
+      "required": true,
+      "range": [0, 1]
+    },
+    {
+      "name": "distance_proxy_m",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "peer_moving_count",
+      "dtype": "int",
+      "required": true,
+      "notes": "Other vehicles still moving — congestion/red-light discriminator"
+    },
+    {
+      "name": "peer_moving_ratio",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "approach_density",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "in_travel_lane_proxy",
+      "dtype": "int",
+      "required": true,
+      "range": [0, 1],
+      "notes": "1 if not in shoulder/parking heuristic; default 1 if unknown"
+    }
+  ],
+  "forbidden_training_features": [
+    "has_any_anomaly_in_video",
+    "rule_stop_hint",
+    "sudden_stop_candidate",
+    "y_abnormal_stop",
+    "motion_mean",
+    "motion_std",
+    "motion_p95",
+    "stationary_score",
+    "motion_mean_z",
+    "low_motion_flag"
+  ],
+  "context_not_for_model_inputs": [
+    "sudden_stop_candidate"
+  ],
+  "sequence_optional": {
+    "enabled_for_dl": true,
+    "timesteps": 64,
+    "channels": [
+      "x_norm",
+      "y_norm",
+      "speed",
+      "heading_sin",
+      "heading_cos",
+      "stopped_flag"
+    ]
+  },
+  "inference_compatibility": {
+    "perception_engine": "yolov8n_bytetrack",
+    "builder": "feature_builder.build_module2_features",
+    "aligns_with_live_track_summary": true,
+    "schema_hash_file": "models/module2/schema_hash.txt"
+  }
+}

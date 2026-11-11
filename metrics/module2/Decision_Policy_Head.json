@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9497354497354498,
+  "precision": 0.6509186351706037,
+  "recall": 1.0,
+  "f1": 0.7885532591414944,
+  "roc_auc": 0.9861124189512765,
+  "model": "Decision_Policy_Head",
+  "category": "Optimized DL",
+  "module": "module2_breakdown"
+}

@@ -1,0 +1,10 @@
+{
+  "model": "XGBoost",
+  "category": "Base ML",
+  "module": "module2_breakdown",
+  "accuracy": 0.9907866761162296,
+  "precision": 0.9222222222222223,
+  "recall": 0.9803149606299213,
+  "f1": 0.950381679389313,
+  "roc_auc": 0.998963622537837
+}

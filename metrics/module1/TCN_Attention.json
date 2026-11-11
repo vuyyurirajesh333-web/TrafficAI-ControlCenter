@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9971231386110573,
+  "precision": 0.9000455496563572,
+  "recall": 0.994585851109398,
+  "f1": 0.9424964438839475,
+  "roc_auc": 0.9998368052076517,
+  "model": "TCN_Attention",
+  "category": "Optimized DL",
+  "module": "module1_bus"
+}

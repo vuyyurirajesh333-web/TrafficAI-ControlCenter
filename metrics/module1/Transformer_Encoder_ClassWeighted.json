@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9931730439578458,
+  "precision": 0.7826343300093747,
+  "recall": 0.9960013361205095,
+  "f1": 0.8670798100315272,
+  "roc_auc": 0.9996479053915301,
+  "model": "Transformer_Encoder_ClassWeighted",
+  "category": "Optimized DL",
+  "module": "module1_bus"
+}

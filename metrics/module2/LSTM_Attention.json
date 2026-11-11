@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9467120181405896,
+  "precision": 0.6375321336760925,
+  "recall": 1.0,
+  "f1": 0.7786499215070644,
+  "roc_auc": 0.9817943043934462,
+  "model": "LSTM_Attention",
+  "category": "Optimized DL",
+  "module": "module2_breakdown"
+}

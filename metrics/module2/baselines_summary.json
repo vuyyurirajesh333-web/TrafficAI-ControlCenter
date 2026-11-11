@@ -1,0 +1,42 @@
+[
+  {
+    "model": "Logistic_Regression",
+    "category": "Base ML",
+    "module": "module2_breakdown",
+    "accuracy": 0.946491849751949,
+    "precision": 0.6271604938271605,
+    "recall": 1.0,
+    "f1": 0.7708649468892261,
+    "roc_auc": 0.9861008904260798
+  },
+  {
+    "model": "Random_Forest",
+    "category": "Base ML",
+    "module": "module2_breakdown",
+    "accuracy": 0.9822820694542878,
+    "precision": 0.8493150684931506,
+    "recall": 0.9763779527559056,
+    "f1": 0.9084249084249084,
+    "roc_auc": 0.997401390830819
+  },
+  {
+    "model": "Gradient_Boosting",
+    "category": "Base ML",
+    "module": "module2_breakdown",
+    "accuracy": 0.979801559177888,
+    "precision": 0.8229508196721311,
+    "recall": 0.9881889763779528,
+    "f1": 0.8980322003577818,
+    "roc_auc": 0.998121182574141
+  },
+  {
+    "model": "XGBoost",
+    "category": "Base ML",
+    "module": "module2_breakdown",
+    "accuracy": 0.9907866761162296,
+    "precision": 0.9222222222222223,
+    "recall": 0.9803149606299213,
+    "f1": 0.950381679389313,
+    "roc_auc": 0.998963622537837
+  }
+]

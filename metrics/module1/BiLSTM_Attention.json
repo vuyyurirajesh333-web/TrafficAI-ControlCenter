@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9923532129920849,
+  "precision": 0.761602626424323,
+  "recall": 0.9940759652626836,
+  "f1": 0.8514851836583341,
+  "roc_auc": 0.9996592157886764,
+  "model": "BiLSTM_Attention",
+  "category": "Optimized DL",
+  "module": "module1_bus"
+}

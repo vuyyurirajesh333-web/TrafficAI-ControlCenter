@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9899086261123615,
+  "precision": 0.7174203736676438,
+  "recall": 0.9943505114570009,
+  "f1": 0.8170897557964111,
+  "roc_auc": 0.9997864008289685,
+  "model": "GAT_GRU",
+  "category": "Optimized DL",
+  "module": "module1_bus"
+}

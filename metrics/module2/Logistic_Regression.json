@@ -1,0 +1,10 @@
+{
+  "model": "Logistic_Regression",
+  "category": "Base ML",
+  "module": "module2_breakdown",
+  "accuracy": 0.946491849751949,
+  "precision": 0.6271604938271605,
+  "recall": 1.0,
+  "f1": 0.7708649468892261,
+  "roc_auc": 0.9861008904260798
+}

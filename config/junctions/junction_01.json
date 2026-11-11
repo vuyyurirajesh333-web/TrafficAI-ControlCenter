@@ -1,0 +1,32 @@
+{
+  "id": "junction_01",
+  "name": "South Delhi seed junction (CR Park / Nehru Place corridor)",
+  "lat": 28.5411,
+  "lon": 77.2492,
+  "source": "datasets/processed/module1_bus/module1_ml_meta.json",
+  "meters_per_pixel": 0.05,
+  "meters_per_pixel_note": "Uncalibrated proxy; replace after homography / reference length measurement",
+  "camera_id": "CCTV-FIXED-01",
+  "approaches": {
+    "North": {
+      "polygon_norm": [[0.25, 0.0], [0.75, 0.0], [0.70, 0.48], [0.30, 0.48]],
+      "conflicts_with": ["South", "East", "West"]
+    },
+    "South": {
+      "polygon_norm": [[0.25, 0.52], [0.75, 0.52], [0.75, 1.0], [0.25, 1.0]],
+      "conflicts_with": ["North", "East", "West"]
+    },
+    "East": {
+      "polygon_norm": [[0.55, 0.20], [1.0, 0.20], [1.0, 0.80], [0.55, 0.80]],
+      "conflicts_with": ["West", "North", "South"]
+    },
+    "West": {
+      "polygon_norm": [[0.0, 0.20], [0.45, 0.20], [0.45, 0.80], [0.0, 0.80]],
+      "conflicts_with": ["East", "North", "South"]
+    }
+  },
+  "uturn_pocket": {
+    "polygon_norm": [[0.35, 0.35], [0.65, 0.35], [0.65, 0.65], [0.35, 0.65]]
+  },
+  "gtfs_route_codes": ["425", "534"]
+}

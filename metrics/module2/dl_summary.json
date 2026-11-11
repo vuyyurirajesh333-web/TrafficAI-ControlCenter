@@ -1,0 +1,72 @@
+[
+  {
+    "accuracy": 0.9467120181405896,
+    "precision": 0.6375321336760925,
+    "recall": 1.0,
+    "f1": 0.7786499215070644,
+    "roc_auc": 0.9817943043934462,
+    "model": "LSTM_Attention",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9531368102796675,
+    "precision": 0.6666666666666666,
+    "recall": 1.0,
+    "f1": 0.8,
+    "roc_auc": 0.9926232209637063,
+    "model": "BiLSTM_Attention",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9625850340136054,
+    "precision": 0.717201166180758,
+    "recall": 0.9919354838709677,
+    "f1": 0.8324873096446701,
+    "roc_auc": 0.9962788210605612,
+    "model": "TCN_Attention",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9610733182161754,
+    "precision": 0.7101449275362319,
+    "recall": 0.9879032258064516,
+    "f1": 0.8263069139966274,
+    "roc_auc": 0.99570206354758,
+    "model": "Transformer_Feature_Attention",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9591836734693877,
+    "precision": 0.6988636363636364,
+    "recall": 0.9919354838709677,
+    "f1": 0.82,
+    "roc_auc": 0.9966622050633591,
+    "model": "Transformer_Encoder_ClassWeighted",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9470899470899471,
+    "precision": 0.6391752577319587,
+    "recall": 1.0,
+    "f1": 0.779874213836478,
+    "roc_auc": 0.9823895585030537,
+    "model": "GAT_GRU",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  },
+  {
+    "accuracy": 0.9497354497354498,
+    "precision": 0.6509186351706037,
+    "recall": 1.0,
+    "f1": 0.7885532591414944,
+    "roc_auc": 0.9861124189512765,
+    "model": "Decision_Policy_Head",
+    "category": "Optimized DL",
+    "module": "module2_breakdown"
+  }
+]

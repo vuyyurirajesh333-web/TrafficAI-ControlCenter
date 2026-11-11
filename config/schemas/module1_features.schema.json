@@ -1,0 +1,134 @@
+{
+  "schema_id": "module1_bus_priority_v1",
+  "module": "module1",
+  "version": "1.0.0",
+  "frozen_in": "PHASE_A",
+  "task_type": "multiclass_or_binary_priority",
+  "label_policy": {
+    "primary_demo": "human_annotated_cctv_priority_events",
+    "secondary_weak": "gps_gtfs_schedule_lateness_on_held_out_corridors",
+    "forbidden": [
+      "Do not set y from thresholds on eta_proxy_sec or distance_proxy_m that are also model inputs",
+      "Do not reuse quarantined module1_ml_table priority_action labels for reported metrics"
+    ],
+    "label_name": "y_priority",
+    "label_values": {
+      "0": "NONE",
+      "1": "REQUEST_PRIORITY"
+    },
+    "optional_extended_values": {
+      "2": "STRONG_PRIORITY"
+    },
+    "label_sources_allowed": [
+      "human_cctv",
+      "weak_gps_gtfs_heldout"
+    ]
+  },
+  "split_policy": {
+    "method": "group",
+    "group_keys_cctv": ["video_id"],
+    "group_keys_gps": ["route_code", "day_id"],
+    "forbidden": "random_row_split"
+  },
+  "row_grain": "one_row_per_bus_track_window_or_gps_approach_event",
+  "identity_columns": [
+    "sample_id",
+    "source_type",
+    "video_id",
+    "track_id",
+    "route_code",
+    "day_id",
+    "junction_id",
+    "label_source"
+  ],
+  "model_input_features": [
+    {
+      "name": "is_bus",
+      "dtype": "int",
+      "range": [0, 1],
+      "required": true,
+      "notes": "1 if YOLO class bus"
+    },
+    {
+      "name": "distance_proxy_m",
+      "dtype": "float",
+      "required": true,
+      "notes": "Uncalibrated proxy from junction meters_per_pixel; must NOT define label"
+    },
+    {
+      "name": "speed_mps_proxy",
+      "dtype": "float",
+      "required": true,
+      "notes": "From track mean/recent speed converted with mpp; CCTV proxy"
+    },
+    {
+      "name": "accel_proxy",
+      "dtype": "float",
+      "required": true,
+      "notes": "Recent speed delta proxy"
+    },
+    {
+      "name": "eta_proxy_sec",
+      "dtype": "float",
+      "required": true,
+      "notes": "distance_proxy_m / max(speed, eps); must NOT define label"
+    },
+    {
+      "name": "approach_id",
+      "dtype": "category",
+      "required": true,
+      "values": ["North", "South", "East", "West", "unknown"]
+    },
+    {
+      "name": "approach_density",
+      "dtype": "float",
+      "required": true,
+      "notes": "Vehicles on same approach"
+    },
+    {
+      "name": "signal_phase_code",
+      "dtype": "int",
+      "required": false,
+      "notes": "Simulated/known phase encoding; 0 if unknown"
+    },
+    {
+      "name": "track_age_sec",
+      "dtype": "float",
+      "required": true
+    },
+    {
+      "name": "mean_recent_speed",
+      "dtype": "float",
+      "required": true,
+      "notes": "Pixel/sec or normalized; keep consistent with training export"
+    },
+    {
+      "name": "schedule_lateness_sec",
+      "dtype": "float",
+      "required": false,
+      "notes": "GPS/GTFS weak-supervision only. If used as FEATURE, label must not be a threshold of this field. Prefer omit for CCTV demo model or use only when label is human_cctv"
+    }
+  ],
+  "forbidden_training_features": [
+    "priority_action",
+    "y_priority",
+    "rule_priority_hint",
+    "has_priority_in_video"
+  ],
+  "sequence_optional": {
+    "enabled_for_dl": true,
+    "timesteps": 32,
+    "channels": [
+      "x_norm",
+      "y_norm",
+      "speed",
+      "heading_sin",
+      "heading_cos"
+    ]
+  },
+  "inference_compatibility": {
+    "perception_engine": "yolov8n_bytetrack",
+    "builder": "feature_builder.build_module1_features",
+    "schema_hash_file": "models/module1/schema_hash.txt"
+  }
+}

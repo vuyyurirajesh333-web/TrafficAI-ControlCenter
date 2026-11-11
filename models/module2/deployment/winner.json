@@ -1,0 +1,8 @@
+{
+  "module": "module2",
+  "model_key": "LightGBM",
+  "artifact_relpath": "baselines/LightGBM.joblib",
+  "selection_rule": "best_validation_f1_then_pr_auc_then_lower_latency",
+  "selected_on": "validation_only",
+  "schema_id": "module2_breakdown_v1"
+}

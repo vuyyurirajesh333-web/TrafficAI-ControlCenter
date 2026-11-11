@@ -1,0 +1,20 @@
+{
+  "rows": 419453,
+  "label_counts": {
+    "NONE": 415421,
+    "TRUNCATE_RED": 3044,
+    "EXTEND_GREEN": 988
+  },
+  "junction_lat": 28.5411,
+  "junction_lon": 77.2492,
+  "features": [
+    "dist_to_junction_m",
+    "speed_mps",
+    "eta_sec",
+    "lateness_sec",
+    "t_sec",
+    "direction_up",
+    "node",
+    "route_code"
+  ]
+}

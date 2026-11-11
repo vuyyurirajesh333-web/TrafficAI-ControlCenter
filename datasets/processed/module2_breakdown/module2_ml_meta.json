@@ -1,0 +1,22 @@
+{
+  "rows": 14110,
+  "positives": 1272,
+  "negatives": 12838,
+  "features": [
+    "t_sec",
+    "duration_sec",
+    "rel_time",
+    "fps",
+    "motion_mean",
+    "motion_std",
+    "motion_p95",
+    "stationary_score",
+    "motion_mean_z",
+    "low_motion_flag",
+    "rule_stop_hint",
+    "has_any_anomaly_in_video"
+  ],
+  "label_source": "AI City 2021 Track4 train-anomaly-results.txt",
+  "feature_source": "OpenCV frame-difference motion features on real CCTV clips",
+  "note": "y=1 if window time falls inside annotated anomaly interval"
+}

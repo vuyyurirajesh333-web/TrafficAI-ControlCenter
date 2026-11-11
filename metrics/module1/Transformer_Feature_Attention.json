@@ -1,0 +1,10 @@
+{
+  "accuracy": 0.9966610520667193,
+  "precision": 0.844922485049381,
+  "recall": 0.9899863047229444,
+  "f1": 0.908115919382024,
+  "roc_auc": 0.9993365633895114,
+  "model": "Transformer_Feature_Attention",
+  "category": "Optimized DL",
+  "module": "module1_bus"
+}
