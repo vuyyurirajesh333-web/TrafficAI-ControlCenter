@@ -5,10 +5,23 @@ dist/
 .env
 *.log
 
-# large model/data files (keep on Drive)
-*.pt
-*.joblib
+# large / raw data
 *.parquet
 *.csv
 datasets/raw/
 data/outputs/
+
+# model weights ignored by default
+*.pt
+*.joblib
+
+# but keep demo DL weights + YOLO in git for teammate setup
+!models/module1/dl/*.pt
+!models/module2/dl/*.pt
+!models/module3/dl/*.pt
+!app/backend/yolov8n.pt
+
+# ignore download dump folders / quarantine weights
+models-*/
+metrics-*/
+models/quarantine_leaky/
