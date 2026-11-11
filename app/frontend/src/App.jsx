@@ -63,7 +63,7 @@ export default function App() {
           </div>
           <div className="ops-meta-block">
             <span>Engine</span>
-            <strong>{health?.decision_engine || "rules_v1"}</strong>
+            <strong>{health?.decision_engine || "model_inference_v1"}</strong>
           </div>
         </div>
       </header>
@@ -88,8 +88,8 @@ export default function App() {
 
       <footer className="ops-foot">
         <p>
-          Live decisions: <code>{health?.decision_engine || "rules_v1"}</code> on{" "}
-          <code>{health?.perception_engine || "yolov8n_bytetrack"}</code>. Colab arena is engineering-only.
+          Live decisions: <code>{health?.decision_engine || "model_inference_v1"}</code> on{" "}
+          <code>{health?.perception_engine || "yolov8n_bytetrack"}</code>. Lab shows notebook photo metrics only.
         </p>
         <p>GTFS stops available: {health?.geo?.stops_available ?? "—"} · Camera: fixed CCTV</p>
       </footer>

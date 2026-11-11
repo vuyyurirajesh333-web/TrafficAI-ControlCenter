@@ -1,0 +1,212 @@
+[
+  {
+    "model": "MLP",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9826086956521739,
+      "precision": 0.9354838709677419,
+      "recall": 1.0,
+      "f1": 0.9666666666666667,
+      "roc_auc": 0.9991980753809142,
+      "pr_auc": 0.9977753058954393
+    },
+    "test": {
+      "accuracy": 0.959349593495935,
+      "precision": 0.7,
+      "recall": 0.7777777777777778,
+      "f1": 0.7368421052631579,
+      "roc_auc": 0.9805068226120858,
+      "pr_auc": 0.8220899470899472
+    },
+    "artifact": "models/module2/dl/MLP.pt"
+  },
+  {
+    "model": "LSTM",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.808695652173913,
+      "precision": 0.574468085106383,
+      "recall": 0.9310344827586207,
+      "f1": 0.7105263157894737,
+      "roc_auc": 0.909382518043304,
+      "pr_auc": 0.8738483651927526
+    },
+    "test": {
+      "accuracy": 0.7154471544715447,
+      "precision": 0.19047619047619047,
+      "recall": 0.8888888888888888,
+      "f1": 0.3137254901960784,
+      "roc_auc": 0.8391812865497076,
+      "pr_auc": 0.3362761743067345
+    },
+    "artifact": "models/module2/dl/LSTM.pt"
+  },
+  {
+    "model": "GRU",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.8521739130434782,
+      "precision": 0.6666666666666666,
+      "recall": 0.8275862068965517,
+      "f1": 0.7384615384615385,
+      "roc_auc": 0.8973536487570168,
+      "pr_auc": 0.8505015031844556
+    },
+    "test": {
+      "accuracy": 0.8048780487804879,
+      "precision": 0.25806451612903225,
+      "recall": 0.8888888888888888,
+      "f1": 0.4,
+      "roc_auc": 0.8703703703703703,
+      "pr_auc": 0.47142709142709144
+    },
+    "artifact": "models/module2/dl/GRU.pt"
+  },
+  {
+    "model": "BiLSTM",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9391304347826087,
+      "precision": 0.9230769230769231,
+      "recall": 0.8275862068965517,
+      "f1": 0.8727272727272727,
+      "roc_auc": 0.9190056134723336,
+      "pr_auc": 0.9049750182660141
+    },
+    "test": {
+      "accuracy": 0.5121951219512195,
+      "precision": 0.1076923076923077,
+      "recall": 0.7777777777777778,
+      "f1": 0.1891891891891892,
+      "roc_auc": 0.7982456140350878,
+      "pr_auc": 0.4580875180300467
+    },
+    "artifact": "models/module2/dl/BiLSTM.pt"
+  },
+  {
+    "model": "TCN",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9043478260869565,
+      "precision": 0.78125,
+      "recall": 0.8620689655172413,
+      "f1": 0.819672131147541,
+      "roc_auc": 0.9819566960705693,
+      "pr_auc": 0.9589229043590097
+    },
+    "test": {
+      "accuracy": 0.9186991869918699,
+      "precision": 0.45454545454545453,
+      "recall": 0.5555555555555556,
+      "f1": 0.5,
+      "roc_auc": 0.8976608187134503,
+      "pr_auc": 0.48269841269841274
+    },
+    "artifact": "models/module2/dl/TCN.pt"
+  },
+  {
+    "model": "Transformer_Encoder",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9043478260869565,
+      "precision": 0.78125,
+      "recall": 0.8620689655172413,
+      "f1": 0.819672131147541,
+      "roc_auc": 0.9707297514033681,
+      "pr_auc": 0.9463314564040516
+    },
+    "test": {
+      "accuracy": 0.983739837398374,
+      "precision": 0.8181818181818182,
+      "recall": 1.0,
+      "f1": 0.9,
+      "roc_auc": 0.9922027290448343,
+      "pr_auc": 0.8691718775052109
+    },
+    "artifact": "models/module2/dl/Transformer_Encoder.pt"
+  },
+  {
+    "model": "TemporalCNN",
+    "category": "Optimized DL",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.7913043478260869,
+      "precision": 0.5581395348837209,
+      "recall": 0.8275862068965517,
+      "f1": 0.6666666666666666,
+      "roc_auc": 0.8396150761828389,
+      "pr_auc": 0.4871834839773174
+    },
+    "test": {
+      "accuracy": 0.8943089430894309,
+      "precision": 0.375,
+      "recall": 0.6666666666666666,
+      "f1": 0.48,
+      "roc_auc": 0.9483430799220273,
+      "pr_auc": 0.7443567325920268
+    },
+    "artifact": "models/module2/dl/TemporalCNN.pt"
+  }
+]

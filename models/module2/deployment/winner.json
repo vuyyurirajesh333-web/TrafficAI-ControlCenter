@@ -1,8 +1,8 @@
 {
   "module": "module2",
-  "model_key": "LightGBM",
-  "artifact_relpath": "baselines/LightGBM.joblib",
-  "selection_rule": "best_validation_f1_then_pr_auc_then_lower_latency",
-  "selected_on": "validation_only",
+  "model_key": "GAT_GRU",
+  "artifact_relpath": "dl/GAT_GRU.pt",
+  "selection_rule": "demo_allowed_priority_gat_first",
+  "selected_on": "notebook_photo_priority",
   "schema_id": "module2_breakdown_v1"
 }

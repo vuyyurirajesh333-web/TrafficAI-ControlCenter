@@ -1,0 +1,163 @@
+[
+  {
+    "model": "MLP",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8838174273858921,
+      "precision": 0.4444444444444444,
+      "recall": 0.48,
+      "f1": 0.46153846153846156,
+      "roc_auc": 0.7566666666666667,
+      "pr_auc": 0.38060552862262875,
+      "threshold": 0.55
+    },
+    "test": {
+      "accuracy": 0.8755186721991701,
+      "precision": 0.34782608695652173,
+      "recall": 0.34782608695652173,
+      "f1": 0.34782608695652173,
+      "roc_auc": 0.7891902672516953,
+      "pr_auc": 0.29420010866128554,
+      "threshold": 0.55
+    },
+    "artifact": "models/module3/dl/MLP.pt"
+  },
+  {
+    "model": "LSTM",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.7717842323651453,
+      "precision": 0.2727272727272727,
+      "recall": 0.72,
+      "f1": 0.3956043956043956,
+      "roc_auc": 0.7975925925925926,
+      "pr_auc": 0.2833676680224591,
+      "threshold": 0.6250000000000001
+    },
+    "test": {
+      "accuracy": 0.8132780082987552,
+      "precision": 0.30357142857142855,
+      "recall": 0.7391304347826086,
+      "f1": 0.43037974683544306,
+      "roc_auc": 0.8667730355005983,
+      "pr_auc": 0.41667645383053664,
+      "threshold": 0.6250000000000001
+    },
+    "artifact": "models/module3/dl/LSTM.pt"
+  },
+  {
+    "model": "GRU",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8215767634854771,
+      "precision": 0.30434782608695654,
+      "recall": 0.56,
+      "f1": 0.39436619718309857,
+      "roc_auc": 0.7938888888888889,
+      "pr_auc": 0.31859984029851146,
+      "threshold": 0.6250000000000001
+    },
+    "test": {
+      "accuracy": 0.8672199170124482,
+      "precision": 0.3953488372093023,
+      "recall": 0.7391304347826086,
+      "f1": 0.5151515151515151,
+      "roc_auc": 0.9128440366972477,
+      "pr_auc": 0.5764873895581546,
+      "threshold": 0.6250000000000001
+    },
+    "artifact": "models/module3/dl/GRU.pt"
+  },
+  {
+    "model": "BiLSTM",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8381742738589212,
+      "precision": 0.3409090909090909,
+      "recall": 0.6,
+      "f1": 0.43478260869565216,
+      "roc_auc": 0.8162962962962963,
+      "pr_auc": 0.2935695584280284,
+      "threshold": 0.55
+    },
+    "test": {
+      "accuracy": 0.8257261410788381,
+      "precision": 0.2978723404255319,
+      "recall": 0.6086956521739131,
+      "f1": 0.4,
+      "roc_auc": 0.8494216194654965,
+      "pr_auc": 0.3627656304285881,
+      "threshold": 0.55
+    },
+    "artifact": "models/module3/dl/BiLSTM.pt"
+  },
+  {
+    "model": "TCN",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8464730290456431,
+      "precision": 0.36363636363636365,
+      "recall": 0.64,
+      "f1": 0.463768115942029,
+      "roc_auc": 0.8001851851851851,
+      "pr_auc": 0.39498283405986423,
+      "threshold": 0.6500000000000001
+    },
+    "test": {
+      "accuracy": 0.8962655601659751,
+      "precision": 0.47368421052631576,
+      "recall": 0.782608695652174,
+      "f1": 0.5901639344262295,
+      "roc_auc": 0.8901076984443558,
+      "pr_auc": 0.5214923829523509,
+      "threshold": 0.6500000000000001
+    },
+    "artifact": "models/module3/dl/TCN.pt"
+  },
+  {
+    "model": "Transformer_Encoder",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8423236514522822,
+      "precision": 0.3488372093023256,
+      "recall": 0.6,
+      "f1": 0.4411764705882353,
+      "roc_auc": 0.7977777777777777,
+      "pr_auc": 0.3178119525708559,
+      "threshold": 0.6250000000000001
+    },
+    "test": {
+      "accuracy": 0.8838174273858921,
+      "precision": 0.42857142857142855,
+      "recall": 0.6521739130434783,
+      "f1": 0.5172413793103449,
+      "roc_auc": 0.9032708416433985,
+      "pr_auc": 0.6355768189534314,
+      "threshold": 0.6250000000000001
+    },
+    "artifact": "models/module3/dl/Transformer_Encoder.pt"
+  },
+  {
+    "model": "TemporalCNN",
+    "category": "Optimized DL",
+    "val": {
+      "accuracy": 0.8879668049792531,
+      "precision": 0.4642857142857143,
+      "recall": 0.52,
+      "f1": 0.49056603773584906,
+      "roc_auc": 0.8005555555555556,
+      "pr_auc": 0.4076378116714776,
+      "threshold": 0.6250000000000001
+    },
+    "test": {
+      "accuracy": 0.9045643153526971,
+      "precision": 0.5,
+      "recall": 0.6086956521739131,
+      "f1": 0.5490196078431373,
+      "roc_auc": 0.8737534902273634,
+      "pr_auc": 0.4773655422130596,
+      "threshold": 0.6250000000000001
+    },
+    "artifact": "models/module3/dl/TemporalCNN.pt"
+  }
+]

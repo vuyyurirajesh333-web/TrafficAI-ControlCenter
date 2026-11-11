@@ -1,0 +1,134 @@
+[
+  {
+    "model": "Logistic_Regression",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "mean_speed",
+      "std_speed",
+      "mean_acc",
+      "std_acc",
+      "path_len",
+      "displacement",
+      "lane_changes",
+      "start_lane",
+      "end_lane"
+    ],
+    "val": {
+      "accuracy": 0.8921161825726142,
+      "precision": 0.48936170212765956,
+      "recall": 0.92,
+      "f1": 0.6388888888888888,
+      "roc_auc": 0.9555555555555555,
+      "pr_auc": 0.7760405790482502
+    },
+    "test": {
+      "accuracy": 0.921161825726141,
+      "precision": 0.5476190476190477,
+      "recall": 1.0,
+      "f1": 0.7076923076923077,
+      "roc_auc": 0.9764658954926206,
+      "pr_auc": 0.770639956716862
+    },
+    "artifact": "models/module3/baselines/Logistic_Regression.joblib"
+  },
+  {
+    "model": "Random_Forest",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "mean_speed",
+      "std_speed",
+      "mean_acc",
+      "std_acc",
+      "path_len",
+      "displacement",
+      "lane_changes",
+      "start_lane",
+      "end_lane"
+    ],
+    "val": {
+      "accuracy": 0.921161825726141,
+      "precision": 0.65,
+      "recall": 0.52,
+      "f1": 0.5777777777777777,
+      "roc_auc": 0.9668518518518519,
+      "pr_auc": 0.6811594831459109
+    },
+    "test": {
+      "accuracy": 0.966804979253112,
+      "precision": 0.8260869565217391,
+      "recall": 0.8260869565217391,
+      "f1": 0.8260869565217391,
+      "roc_auc": 0.9890307140007977,
+      "pr_auc": 0.8717002890442549
+    },
+    "artifact": "models/module3/baselines/Random_Forest.joblib"
+  },
+  {
+    "model": "XGBoost",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "mean_speed",
+      "std_speed",
+      "mean_acc",
+      "std_acc",
+      "path_len",
+      "displacement",
+      "lane_changes",
+      "start_lane",
+      "end_lane"
+    ],
+    "val": {
+      "accuracy": 0.941908713692946,
+      "precision": 0.7391304347826086,
+      "recall": 0.68,
+      "f1": 0.7083333333333334,
+      "roc_auc": 0.9666666666666667,
+      "pr_auc": 0.7642632437586914
+    },
+    "test": {
+      "accuracy": 0.975103734439834,
+      "precision": 0.8695652173913043,
+      "recall": 0.8695652173913043,
+      "f1": 0.8695652173913043,
+      "roc_auc": 0.9906262465097727,
+      "pr_auc": 0.8693568542111852
+    },
+    "artifact": "models/module3/baselines/XGBoost.joblib"
+  },
+  {
+    "model": "LightGBM",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "mean_speed",
+      "std_speed",
+      "mean_acc",
+      "std_acc",
+      "path_len",
+      "displacement",
+      "lane_changes",
+      "start_lane",
+      "end_lane"
+    ],
+    "val": {
+      "accuracy": 0.950207468879668,
+      "precision": 0.8095238095238095,
+      "recall": 0.68,
+      "f1": 0.7391304347826086,
+      "roc_auc": 0.9679629629629629,
+      "pr_auc": 0.782845611586543
+    },
+    "test": {
+      "accuracy": 0.970954356846473,
+      "precision": 0.8636363636363636,
+      "recall": 0.8260869565217391,
+      "f1": 0.8444444444444444,
+      "roc_auc": 0.9902273633825289,
+      "pr_auc": 0.8875632816510224
+    },
+    "artifact": "models/module3/baselines/LightGBM.joblib"
+  }
+]

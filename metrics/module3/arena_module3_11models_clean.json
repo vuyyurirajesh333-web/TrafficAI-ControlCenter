@@ -1,0 +1,110 @@
+{
+  "module": "module3_uturn",
+  "label_meaning": "y=1 geometric U-turn-like heading reversal proxy",
+  "selection_rule": "best_validation_f1",
+  "deployment_winner": "LightGBM",
+  "deployment_winner_val_f1": 0.7391304347826086,
+  "deployment_winner_test_f1": 0.8444444444444444,
+  "n_models": 11,
+  "models": [
+    {
+      "model": "Logistic_Regression",
+      "category": "Base ML",
+      "val_f1": 0.6388888888888888,
+      "test_f1": 0.7076923076923077,
+      "val_pr_auc": 0.7760405790482502,
+      "test_pr_auc": 0.770639956716862,
+      "artifact": "models/module3/baselines/Logistic_Regression.joblib"
+    },
+    {
+      "model": "Random_Forest",
+      "category": "Base ML",
+      "val_f1": 0.5777777777777777,
+      "test_f1": 0.8260869565217391,
+      "val_pr_auc": 0.6811594831459109,
+      "test_pr_auc": 0.8717002890442549,
+      "artifact": "models/module3/baselines/Random_Forest.joblib"
+    },
+    {
+      "model": "XGBoost",
+      "category": "Base ML",
+      "val_f1": 0.7083333333333334,
+      "test_f1": 0.8695652173913043,
+      "val_pr_auc": 0.7642632437586914,
+      "test_pr_auc": 0.8693568542111852,
+      "artifact": "models/module3/baselines/XGBoost.joblib"
+    },
+    {
+      "model": "LightGBM",
+      "category": "Base ML",
+      "val_f1": 0.7391304347826086,
+      "test_f1": 0.8444444444444444,
+      "val_pr_auc": 0.782845611586543,
+      "test_pr_auc": 0.8875632816510224,
+      "artifact": "models/module3/baselines/LightGBM.joblib"
+    },
+    {
+      "model": "MLP",
+      "category": "Optimized DL",
+      "val_f1": 0.46153846153846156,
+      "test_f1": 0.34782608695652173,
+      "val_pr_auc": 0.38060552862262875,
+      "test_pr_auc": 0.29420010866128554,
+      "artifact": "models/module3/dl/MLP.pt"
+    },
+    {
+      "model": "LSTM",
+      "category": "Optimized DL",
+      "val_f1": 0.3956043956043956,
+      "test_f1": 0.43037974683544306,
+      "val_pr_auc": 0.2833676680224591,
+      "test_pr_auc": 0.41667645383053664,
+      "artifact": "models/module3/dl/LSTM.pt"
+    },
+    {
+      "model": "GRU",
+      "category": "Optimized DL",
+      "val_f1": 0.39436619718309857,
+      "test_f1": 0.5151515151515151,
+      "val_pr_auc": 0.31859984029851146,
+      "test_pr_auc": 0.5764873895581546,
+      "artifact": "models/module3/dl/GRU.pt"
+    },
+    {
+      "model": "BiLSTM",
+      "category": "Optimized DL",
+      "val_f1": 0.43478260869565216,
+      "test_f1": 0.4,
+      "val_pr_auc": 0.2935695584280284,
+      "test_pr_auc": 0.3627656304285881,
+      "artifact": "models/module3/dl/BiLSTM.pt"
+    },
+    {
+      "model": "TCN",
+      "category": "Optimized DL",
+      "val_f1": 0.463768115942029,
+      "test_f1": 0.5901639344262295,
+      "val_pr_auc": 0.39498283405986423,
+      "test_pr_auc": 0.5214923829523509,
+      "artifact": "models/module3/dl/TCN.pt"
+    },
+    {
+      "model": "Transformer_Encoder",
+      "category": "Optimized DL",
+      "val_f1": 0.4411764705882353,
+      "test_f1": 0.5172413793103449,
+      "val_pr_auc": 0.3178119525708559,
+      "test_pr_auc": 0.6355768189534314,
+      "artifact": "models/module3/dl/Transformer_Encoder.pt"
+    },
+    {
+      "model": "TemporalCNN",
+      "category": "Optimized DL",
+      "val_f1": 0.49056603773584906,
+      "test_f1": 0.5490196078431373,
+      "val_pr_auc": 0.4076378116714776,
+      "test_pr_auc": 0.4773655422130596,
+      "artifact": "models/module3/dl/TemporalCNN.pt"
+    }
+  ]
+}

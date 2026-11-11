@@ -69,8 +69,14 @@ export default function Monitor() {
       const winners = { module1: "", module2: "", module3: "" };
       for (const [m, data] of rows) {
         if (!data) continue;
-        next[m] = data.models || [];
-        winners[m] = data.winner?.model_key || "";
+        const winnerKey = data.winner?.model_key || "";
+        winners[m] = winnerKey;
+        const models = [...(data.models || [])].sort((a, b) => {
+          if (a.model_key === winnerKey) return -1;
+          if (b.model_key === winnerKey) return 1;
+          return String(a.model_key).localeCompare(String(b.model_key));
+        });
+        next[m] = models;
       }
       setModelOptions(next);
       setModelModule1((v) => v || winners.module1);
@@ -237,9 +243,9 @@ export default function Monitor() {
               <label className="ops-tune">
                 M1 model
                 <select value={modelModule1} onChange={(e) => setModelModule1(e.target.value)}>
-                  {(modelOptions.module1.length ? modelOptions.module1 : [{ model_key: "TCN" }]).map((m) => (
-                    <option key={m.model_key} value={m.model_key}>
-                      {m.model_key}{m.exists === false ? " (missing)" : ""}
+                  {(modelOptions.module1.length ? modelOptions.module1 : [{ model_key: "GAT_GRU" }]).map((m) => (
+                    <option key={m.model_key} value={m.model_key} disabled={m.exists === false}>
+                      {m.model_key}{m.model_key === "GAT_GRU" ? " ★" : ""}{m.exists === false ? " (missing)" : ""}
                     </option>
                   ))}
                 </select>
@@ -247,9 +253,9 @@ export default function Monitor() {
               <label className="ops-tune">
                 M2 model
                 <select value={modelModule2} onChange={(e) => setModelModule2(e.target.value)}>
-                  {(modelOptions.module2.length ? modelOptions.module2 : [{ model_key: "LightGBM" }]).map((m) => (
-                    <option key={m.model_key} value={m.model_key}>
-                      {m.model_key}{m.exists === false ? " (missing)" : ""}
+                  {(modelOptions.module2.length ? modelOptions.module2 : [{ model_key: "GAT_GRU" }]).map((m) => (
+                    <option key={m.model_key} value={m.model_key} disabled={m.exists === false}>
+                      {m.model_key}{m.model_key === "GAT_GRU" ? " ★" : ""}{m.exists === false ? " (missing)" : ""}
                     </option>
                   ))}
                 </select>
@@ -257,9 +263,9 @@ export default function Monitor() {
               <label className="ops-tune">
                 M3 model
                 <select value={modelModule3} onChange={(e) => setModelModule3(e.target.value)}>
-                  {(modelOptions.module3.length ? modelOptions.module3 : [{ model_key: "LightGBM" }]).map((m) => (
-                    <option key={m.model_key} value={m.model_key}>
-                      {m.model_key}{m.exists === false ? " (missing)" : ""}
+                  {(modelOptions.module3.length ? modelOptions.module3 : [{ model_key: "GAT_GRU" }]).map((m) => (
+                    <option key={m.model_key} value={m.model_key} disabled={m.exists === false}>
+                      {m.model_key}{m.model_key === "GAT_GRU" ? " ★" : ""}{m.exists === false ? " (missing)" : ""}
                     </option>
                   ))}
                 </select>
@@ -279,9 +285,12 @@ export default function Monitor() {
 
             {(!!samples.length || samplesError) && (
               <div className="ops-samples">
-                <span>On disk · click to analyze</span>
+                <span>Demo clips · click to analyze</span>
                 {samplesError && <em className="ops-samples__err">{samplesError}</em>}
-                {samples.map((s) => (
+                {samples
+                  .filter((s) => s.demo_chip)
+                  .filter((s, i, arr) => arr.findIndex((x) => x.label === s.label) === i)
+                  .map((s) => (
                   <button
                     key={s.filename}
                     type="button"
@@ -289,7 +298,7 @@ export default function Monitor() {
                     disabled={loading}
                     onClick={() => analyzeSample(s.filename)}
                   >
-                    {s.filename.replace(/^test_/, "").replace(/\.mp4$/i, "")}
+                    {s.label || s.filename}
                   </button>
                 ))}
               </div>
@@ -420,11 +429,9 @@ export default function Monitor() {
           statusLabel={m1?.priority_status || "INACTIVE"}
           rows={[
             ["Selected model", m1?.selected_model],
-            ["Model score", m1?.model_score != null ? fmt(m1.model_score) : null],
-            ["Decision", m1?.decision],
+            ["Decision", m1?.decision || m1?.priority_status],
             ["Source", m1?.decision_source],
-            ["Safety", m1?.safety_status],
-            ["Action", m1?.recommended_action],
+            ["Alert / action", m1?.recommended_action],
           ]}
         />
         <ModuleCard
@@ -435,12 +442,9 @@ export default function Monitor() {
           statusLabel={m2?.status || "NORMAL"}
           rows={[
             ["Selected model", m2?.selected_model],
-            ["Model score", m2?.model_score != null ? fmt(m2.model_score) : null],
-            ["Decision", m2?.decision],
+            ["Decision", m2?.decision || m2?.status],
             ["Source", m2?.decision_source],
-            ["Safety", m2?.safety_status],
-            ["Vehicle", m2?.vehicle_id],
-            ["Control room", m2?.control_room],
+            ["Alert / action", m2?.action || m2?.control_room],
           ]}
         />
         <ModuleCard
@@ -451,11 +455,9 @@ export default function Monitor() {
           statusLabel={m3?.demand_level || "Low"}
           rows={[
             ["Selected model", m3?.selected_model],
-            ["Model score", m3?.model_score != null ? fmt(m3.model_score) : null],
             ["Decision", m3?.decision],
             ["Source", m3?.decision_source],
-            ["Safety", m3?.safety_status],
-            ["Action", m3?.recommended_action],
+            ["Alert / action", m3?.recommended_action],
           ]}
         />
       </div>

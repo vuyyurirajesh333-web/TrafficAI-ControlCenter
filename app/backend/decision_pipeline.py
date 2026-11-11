@@ -6,6 +6,7 @@ from typing import Any
 
 from junction_config import estimate_conflict_gap_sec
 from module_inference import ModelInferenceError, score_tracks_for_module
+from model_registry import winner_config
 from perception import build_module_outputs
 from safety_shield import apply_safety_shield
 
@@ -269,19 +270,27 @@ def run_decisions(
 
     try:
         if "module1" in wanted:
-            m1 = _infer_module1(perception, model_module1 or "TCN")
+            m1 = _infer_module1(
+                perception, model_module1 or winner_config("module1")["model_key"]
+            )
     except ModelInferenceError as exc:
         errors.append(f"module1: {exc}")
 
     try:
         if "module2" in wanted:
-            m2, alerts = _infer_module2(perception, model_module2 or "LightGBM")
+            m2, alerts = _infer_module2(
+                perception, model_module2 or winner_config("module2")["model_key"]
+            )
     except ModelInferenceError as exc:
         errors.append(f"module2: {exc}")
 
     try:
         if "module3" in wanted:
-            m3 = _infer_module3(perception, model_module3 or "LightGBM", junction)
+            m3 = _infer_module3(
+                perception,
+                model_module3 or winner_config("module3")["model_key"],
+                junction,
+            )
     except ModelInferenceError as exc:
         errors.append(f"module3: {exc}")
 

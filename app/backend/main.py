@@ -4,7 +4,13 @@ from perception import (
 )
 from decision_pipeline import DECISION_ENGINE, run_decisions
 from module_inference import ModelInferenceError
-from model_registry import health_flags, list_models, load_clean_arena, get_model_entry
+from model_registry import (
+    health_flags,
+    list_models,
+    load_clean_arena,
+    load_clean_arena_bundle,
+    get_model_entry,
+)
 from fastapi.staticfiles import StaticFiles
 
 from pathlib import Path
@@ -46,6 +52,14 @@ OUTPUTS.mkdir(parents=True, exist_ok=True)
 
 METRICS = ROOT / "metrics"
 SAMPLES = ROOT / "data" / "sample_videos"
+DEMO_TMP = Path(tempfile.gettempdir()) / "traffic_ai_demo_outputs"
+DEMO_TMP.mkdir(parents=True, exist_ok=True)
+
+SAMPLE_LABELS = {
+    "test_module1_bus.mp4": "Bus Priority Demo",
+    "test_module2_breakdown.mp4": "Breakdown Alert Demo",
+    "test_module3_uturn.mp4": "U-Turn Demo",
+}
 
 _DEFAULT_CORS = "http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:4173,http://localhost:4173"
 CORS_ALLOW_ORIGINS = [
@@ -65,6 +79,11 @@ app.mount(
     "/outputs",
     StaticFiles(directory=str(OUTPUTS)),
     name="outputs"
+)
+app.mount(
+    "/demo-outputs",
+    StaticFiles(directory=str(DEMO_TMP)),
+    name="demo_outputs"
 )
 
 app.add_middleware(
@@ -92,13 +111,13 @@ def _startup():
 def load_arena(module: str):
     if module not in {"module1", "module2", "module3"}:
         raise HTTPException(400, "module must be module1|module2|module3")
-    data = load_clean_arena(module)
-    if not data:
+    bundle = load_clean_arena_bundle(module)
+    if not bundle.get("models"):
         raise HTTPException(
             404,
             f"missing clean/legacy arena JSON for {module}",
         )
-    return data
+    return bundle
 
 
 @app.get("/api/health")
@@ -144,19 +163,30 @@ def list_samples():
                 hint = "module3_uturn"
             rows.append({
                 "filename": p.name,
+                "label": SAMPLE_LABELS.get(p.name) or p.name.replace("test_", "").replace(".mp4", ""),
                 "bytes": p.stat().st_size,
                 "hint": hint,
+                "demo_chip": p.name in SAMPLE_LABELS,
             })
+    # Prefer friendly demo chips first
+    rows.sort(key=lambda r: (0 if r.get("demo_chip") else 1, r["label"]))
     return {"samples": rows}
 
 
 @app.get("/api/arena/{module}")
 def arena(module: str):
-    """Engineering model leaderboard — prefers *_clean.json."""
+    """Lab metrics from transcribed notebook photo (demo mode)."""
+    bundle = load_arena(module)
     return {
         "module": module,
-        "models": load_arena(module),
-        "source": "clean_preferred",
+        "models": bundle.get("models") or [],
+        "photo_lab": True,
+        "source_path": bundle.get("source_path"),
+        "deployment_winner": bundle.get("deployment_winner"),
+        "selection_rule": bundle.get("selection_rule"),
+        "label_meaning": bundle.get("label_meaning"),
+        "missing_artifacts": bundle.get("missing_artifacts") or [],
+        "source": "notebook_photo_metrics",
     }
 
 
@@ -187,6 +217,7 @@ class SampleAnalyzeRequest(BaseModel):
     model_module2: str | None = None
     model_module3: str | None = None
     allow_rules_fallback: bool = False
+    persist_outputs: bool = False
 
 
 class AckRequest(BaseModel):
@@ -226,6 +257,7 @@ def run_junction_analysis(
     model_module2: str | None = None,
     model_module3: str | None = None,
     allow_rules_fallback: bool = False,
+    persist_outputs: bool = False,
 ) -> dict:
     try:
         junction = load_junction(junction_id)
@@ -233,7 +265,10 @@ def run_junction_analysis(
         raise HTTPException(404, str(exc)) from exc
 
     out_name = f"annot_{Path(display_name).stem}.mp4"
-    out_path = str(OUTPUTS / out_name)
+    # Demo default: write annotated preview to temp only (no permanent outputs folder clutter)
+    out_dir = OUTPUTS if persist_outputs else DEMO_TMP
+    out_path = str(out_dir / out_name)
+    media_prefix = "/outputs" if persist_outputs else "/demo-outputs"
 
     try:
         perception = analyze_and_annotate(
@@ -317,7 +352,7 @@ def run_junction_analysis(
         "analysis_mode": analysis_mode,
         "max_frames": max_frames,
         "stride": stride,
-        "annotated_video_url": f"/outputs/{web_name}",
+        "annotated_video_url": f"{media_prefix}/{web_name}",
         "active_modules": active,
         "alerts": alerts,
         "alert_count": len(alerts),
@@ -331,10 +366,12 @@ def run_junction_analysis(
         "results": decided["results"],
         "safety_shield": decided["safety_shield"],
         "fallback_warning": decided["fallback_warning"],
+        "persist_outputs": persist_outputs,
         "processing_metadata": {
             "perception_engine": PERCEPTION_ENGINE,
             "decision_engine": decided["decision_engine"],
             "allow_rules_fallback": allow_rules_fallback,
+            "persist_outputs": persist_outputs,
             "junction_id": junction.get("id"),
             "frames_processed": perception["frames_processed"],
             "module_mode": module_mode,
@@ -350,6 +387,7 @@ def run_junction_analysis(
                 "module3": "1.0.0",
             },
         },
+
         "junction": {
             "id": junction.get("id"),
             "name": junction.get("name"),
@@ -374,11 +412,14 @@ def run_junction_analysis(
         "tracks_preview": perception["tracks"][:20],
     }
 
-    try:
-        analysis_id = save_analysis(result, junction_id=junction.get("id"))
-        result["analysis_id"] = analysis_id
-    except Exception:
-        logger.exception("Failed to persist analysis")
+    if persist_outputs:
+        try:
+            analysis_id = save_analysis(result, junction_id=junction.get("id"))
+            result["analysis_id"] = analysis_id
+        except Exception:
+            logger.exception("Failed to persist analysis")
+            result["analysis_id"] = None
+    else:
         result["analysis_id"] = None
 
     return result
@@ -395,6 +436,7 @@ async def analyze_video(
     model_module2: str | None = Query(None),
     model_module3: str | None = Query(None),
     allow_rules_fallback: bool = Query(False),
+    persist_outputs: bool = Query(False),
 ):
     if not file.filename or Path(file.filename).suffix.lower() not in VIDEO_SUFFIXES:
         raise HTTPException(400, "Upload a video file (.mp4/.avi/.mov/.mkv/.webm)")
@@ -418,6 +460,7 @@ async def analyze_video(
             model_module2,
             model_module3,
             allow_rules_fallback,
+            persist_outputs,
         )
     finally:
         try:
@@ -442,6 +485,7 @@ async def analyze_sample(body: SampleAnalyzeRequest):
         body.model_module2,
         body.model_module3,
         body.allow_rules_fallback,
+        body.persist_outputs,
     )
 
 

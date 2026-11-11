@@ -1,0 +1,110 @@
+[
+  {
+    "model": "Logistic_Regression",
+    "category": "Base ML",
+    "features": [
+      "dist_to_junction_m",
+      "speed_mps",
+      "node",
+      "direction_up"
+    ],
+    "val": {
+      "accuracy": 0.5951401511527791,
+      "precision": 0.575473399458972,
+      "recall": 0.6295127244032354,
+      "f1": 0.6012813265498398,
+      "roc_auc": 0.6263352694187229,
+      "pr_auc": 0.593971363979418
+    },
+    "test": {
+      "accuracy": 0.5931500241196334,
+      "precision": 0.586628324946082,
+      "recall": 0.629994209612044,
+      "f1": 0.6075383899488134,
+      "roc_auc": 0.6228670283871983,
+      "pr_auc": 0.6107823045494958
+    },
+    "artifact": "models/module1/baselines/Logistic_Regression.joblib"
+  },
+  {
+    "model": "Random_Forest",
+    "category": "Base ML",
+    "features": [
+      "dist_to_junction_m",
+      "speed_mps",
+      "node",
+      "direction_up"
+    ],
+    "val": {
+      "accuracy": 0.6446953027838898,
+      "precision": 0.645604986030518,
+      "recall": 0.5926218188991912,
+      "f1": 0.6179798395391894,
+      "roc_auc": 0.7069099106915941,
+      "pr_auc": 0.6786619160530727
+    },
+    "test": {
+      "accuracy": 0.6464061746261457,
+      "precision": 0.6555190808370948,
+      "recall": 0.61667631731326,
+      "f1": 0.6355047240179016,
+      "roc_auc": 0.7101432391263425,
+      "pr_auc": 0.6970592500175274
+    },
+    "artifact": "models/module1/baselines/Random_Forest.joblib"
+  },
+  {
+    "model": "XGBoost",
+    "category": "Base ML",
+    "features": [
+      "dist_to_junction_m",
+      "speed_mps",
+      "node",
+      "direction_up"
+    ],
+    "val": {
+      "accuracy": 0.655218597531809,
+      "precision": 0.6605303528380452,
+      "recall": 0.5945945945945946,
+      "f1": 0.6258305647840532,
+      "roc_auc": 0.7102866218839743,
+      "pr_auc": 0.682805821978333
+    },
+    "test": {
+      "accuracy": 0.6500723589001447,
+      "precision": 0.6620775969962454,
+      "recall": 0.6126230457440649,
+      "f1": 0.6363909774436091,
+      "roc_auc": 0.7162884149349118,
+      "pr_auc": 0.7042936537563949
+    },
+    "artifact": "models/module1/baselines/XGBoost.joblib"
+  },
+  {
+    "model": "LightGBM",
+    "category": "Base ML",
+    "features": [
+      "dist_to_junction_m",
+      "speed_mps",
+      "node",
+      "direction_up"
+    ],
+    "val": {
+      "accuracy": 0.6492872859466182,
+      "precision": 0.65461758871501,
+      "recall": 0.5859143815348195,
+      "f1": 0.6183635227982511,
+      "roc_auc": 0.7086922058065266,
+      "pr_auc": 0.680769456947387
+    },
+    "test": {
+      "accuracy": 0.6481427882296189,
+      "precision": 0.6610667786644268,
+      "recall": 0.6076047095155376,
+      "f1": 0.6332092929699286,
+      "roc_auc": 0.7136657809815541,
+      "pr_auc": 0.700468306863337
+    },
+    "artifact": "models/module1/baselines/LightGBM.joblib"
+  }
+]

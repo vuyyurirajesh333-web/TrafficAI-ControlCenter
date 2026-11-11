@@ -85,23 +85,27 @@ def build_module1_features(track: dict, perception: dict, signal_phase_code: int
     eta = dist / max(speed, 0.15)
     node = _approach_code(track.get("approach"))
     direction_up = 1 if str(track.get("approach")) in {"North", "East", "NS"} else 0
+    duration = float(track.get("duration_sec") or 0.0)
     return {
-        # Clean TCN artifact names
+        # Clean / demo Attention artifact names (8-d GAT/BiLSTM/TCN/Transformer)
         "dist_to_junction_m": dist,
         "speed_mps": speed,
         "node": float(node),
         "direction_up": float(direction_up),
+        "eta_sec": float(eta),
+        "lateness_sec": float(max(0.0, eta - 30.0)),
+        "t_sec": float(track.get("last_t") or duration),
+        "route_code": float(hash(str(track.get("id") or 0)) % 1000),
         # Schema / compatibility aliases
         "is_bus": int(bool(track.get("is_bus"))),
         "distance_proxy_m": dist,
         "speed_mps_proxy": speed,
         "accel_proxy": float(accel_proxy),
         "eta_proxy_sec": float(eta),
-        "eta_sec": float(eta),
         "approach_id": node,
         "approach_density": _density_for(track, perception),
         "signal_phase_code": int(signal_phase_code or 0),
-        "track_age_sec": float(track.get("duration_sec") or 0.0),
+        "track_age_sec": duration,
         "mean_recent_speed": mean_recent,
     }
 
@@ -156,9 +160,17 @@ def build_module3_features(track: dict, perception: dict) -> dict:
     path_len = float(track.get("path_length") or max_speed * max(duration, 1.0))
     displacement = float(track.get("displacement") or track.get("distance_proxy_m") or 0.0)
     approach = _approach_code(track.get("approach"))
+    xy = track.get("last_xy") or [0.0, 0.0]
+    x = float(xy[0] if isinstance(xy, (list, tuple)) else 0.0)
+    y = float(xy[1] if isinstance(xy, (list, tuple)) else 0.0)
+    heading = float(track.get("net_heading") or 0.0)
+    heading_delta = float(track.get("peak_heading") or heading)
+    frames = int(track.get("frames") or 0)
+    dx = float(last_speed * max(duration, 1.0) / max(frames, 1))
+    dy = float(mean_speed - last_speed)
     return {
         # Clean LightGBM artifact names
-        "frames": int(track.get("frames") or 0),
+        "frames": frames,
         "mean_speed": mean_speed,
         "std_speed": std_speed,
         "mean_acc": float(mean_acc),
@@ -169,13 +181,21 @@ def build_module3_features(track: dict, perception: dict) -> dict:
         "lane_changes": float(track.get("lane_changes") or 0.0),
         "start_lane": float(track.get("start_lane") or approach),
         "end_lane": float(track.get("end_lane") or approach),
+        # Demo seq_feats (7-d Attention/GAT for module3)
+        "x": x,
+        "y": y,
+        "speed": last_speed if last_speed else mean_speed,
+        "dx": dx,
+        "dy": dy,
+        "heading": heading,
+        "heading_delta": heading_delta,
         # Schema / UI extras
         "duration_sec": duration,
         "max_speed": max_speed,
         "tortuosity": float(track.get("tortuosity") or 1.0),
-        "net_heading_change": float(track.get("net_heading") or 0.0),
-        "peak_heading_change": float(track.get("peak_heading") or track.get("net_heading") or 0.0),
-        "heading_reversal_ratio": float(min(1.0, abs(float(track.get("net_heading") or 0.0)) / 3.1416)),
+        "net_heading_change": heading,
+        "peak_heading_change": heading_delta,
+        "heading_reversal_ratio": float(min(1.0, abs(heading) / 3.1416)),
         "in_uturn_pocket": int(bool(track.get("in_uturn_pocket"))),
         "approach_id_start": approach,
         "approach_id_end": approach,

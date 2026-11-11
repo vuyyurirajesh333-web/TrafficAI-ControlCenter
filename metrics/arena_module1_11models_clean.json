@@ -1,0 +1,176 @@
+{
+  "module": "module1_bus",
+  "label_meaning": "y=1 bus late (>5 min) = priority candidate; y=0 otherwise",
+  "selection_rule": "best_validation_f1",
+  "deployment_winner": "TCN",
+  "deployment_winner_val_f1": 0.6696648281714044,
+  "deployment_winner_test_f1": 0.6906786726696682,
+  "n_models": 11,
+  "models": [
+    {
+      "model": "Logistic_Regression",
+      "category": "Base ML",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6012813265498398,
+      "test_f1": 0.6075383899488134,
+      "val_pr_auc": 0.593971363979418,
+      "test_pr_auc": 0.6107823045494958,
+      "artifact": "models/module1/baselines/Logistic_Regression.joblib"
+    },
+    {
+      "model": "Random_Forest",
+      "category": "Base ML",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6179798395391894,
+      "test_f1": 0.6355047240179016,
+      "val_pr_auc": 0.6786619160530727,
+      "test_pr_auc": 0.6970592500175274,
+      "artifact": "models/module1/baselines/Random_Forest.joblib"
+    },
+    {
+      "model": "XGBoost",
+      "category": "Base ML",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6258305647840532,
+      "test_f1": 0.6363909774436091,
+      "val_pr_auc": 0.682805821978333,
+      "test_pr_auc": 0.7042936537563949,
+      "artifact": "models/module1/baselines/XGBoost.joblib"
+    },
+    {
+      "model": "LightGBM",
+      "category": "Base ML",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6183635227982511,
+      "test_f1": 0.6332092929699286,
+      "val_pr_auc": 0.680769456947387,
+      "test_pr_auc": 0.700468306863337,
+      "artifact": "models/module1/baselines/LightGBM.joblib"
+    },
+    {
+      "model": "MLP",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6477493298826139,
+      "test_f1": 0.6653408063641294,
+      "val_pr_auc": 0.6622527932981415,
+      "test_pr_auc": 0.6839233717742295,
+      "artifact": "models/module1/dl/MLP.pt"
+    },
+    {
+      "model": "LSTM",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6398736052137849,
+      "test_f1": 0.6499951909204579,
+      "val_pr_auc": 0.6766129007343092,
+      "test_pr_auc": 0.7008373087355277,
+      "artifact": "models/module1/dl/LSTM.pt"
+    },
+    {
+      "model": "GRU",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6351846351846352,
+      "test_f1": 0.6460885502073889,
+      "val_pr_auc": 0.6729942801967352,
+      "test_pr_auc": 0.6990112352812624,
+      "artifact": "models/module1/dl/GRU.pt"
+    },
+    {
+      "model": "BiLSTM",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6401796173369777,
+      "test_f1": 0.6515828500808062,
+      "val_pr_auc": 0.6774922167645772,
+      "test_pr_auc": 0.7010627451992482,
+      "artifact": "models/module1/dl/BiLSTM.pt"
+    },
+    {
+      "model": "TCN",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6696648281714044,
+      "test_f1": 0.6906786726696682,
+      "val_pr_auc": 0.6789061029885838,
+      "test_pr_auc": 0.7002625422633065,
+      "artifact": "models/module1/dl/TCN.pt"
+    },
+    {
+      "model": "Transformer_Encoder",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.599959653015937,
+      "test_f1": 0.603130845722162,
+      "val_pr_auc": 0.6435124855588209,
+      "test_pr_auc": 0.6571798142300382,
+      "artifact": "models/module1/dl/Transformer_Encoder.pt"
+    },
+    {
+      "model": "TemporalCNN",
+      "category": "Optimized DL",
+      "features": [
+        "dist_to_junction_m",
+        "speed_mps",
+        "node",
+        "direction_up"
+      ],
+      "val_f1": 0.6349675132900178,
+      "test_f1": 0.6400383141762452,
+      "val_pr_auc": 0.6684830924195386,
+      "test_pr_auc": 0.6847612697864979,
+      "artifact": "models/module1/dl/TemporalCNN.pt"
+    }
+  ]
+}

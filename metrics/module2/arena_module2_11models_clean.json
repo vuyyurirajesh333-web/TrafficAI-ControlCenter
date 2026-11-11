@@ -1,0 +1,257 @@
+{
+  "module": "module2_breakdown",
+  "selection_rule": "best_validation_f1",
+  "deployment_winner": "LightGBM",
+  "deployment_winner_val_f1": 0.9666666666666667,
+  "deployment_winner_test_f1": 1.0,
+  "n_models": 11,
+  "models": [
+    {
+      "model": "Logistic_Regression",
+      "category": "Base ML",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.90625,
+      "val_precision": 0.8285714285714286,
+      "val_recall": 1.0,
+      "val_pr_auc": 0.9254602138763083,
+      "test_f1": 0.8181818181818182,
+      "test_precision": 0.6923076923076923,
+      "test_recall": 1.0,
+      "test_pr_auc": 1.0000000000000002,
+      "artifact": null
+    },
+    {
+      "model": "Random_Forest",
+      "category": "Base ML",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.9655172413793104,
+      "val_precision": 0.9655172413793104,
+      "val_recall": 0.9655172413793104,
+      "val_pr_auc": 0.9988505747126438,
+      "test_f1": 0.9473684210526315,
+      "test_precision": 0.9,
+      "test_recall": 1.0,
+      "test_pr_auc": 1.0000000000000002,
+      "artifact": null
+    },
+    {
+      "model": "XGBoost",
+      "category": "Base ML",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.9491525423728814,
+      "val_precision": 0.9333333333333333,
+      "val_recall": 0.9655172413793104,
+      "val_pr_auc": 0.9933996839466517,
+      "test_f1": 0.9473684210526315,
+      "test_precision": 0.9,
+      "test_recall": 1.0,
+      "test_pr_auc": 1.0,
+      "artifact": null
+    },
+    {
+      "model": "LightGBM",
+      "category": "Base ML",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.9666666666666667,
+      "val_precision": 0.9354838709677419,
+      "val_recall": 1.0,
+      "val_pr_auc": 0.9964299869769548,
+      "test_f1": 1.0,
+      "test_precision": 1.0,
+      "test_recall": 1.0,
+      "test_pr_auc": 1.0,
+      "artifact": null
+    },
+    {
+      "model": "MLP",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.9666666666666667,
+      "val_precision": 0.9354838709677419,
+      "val_recall": 1.0,
+      "val_pr_auc": 0.9977753058954393,
+      "test_f1": 0.7368421052631579,
+      "test_precision": 0.7,
+      "test_recall": 0.7777777777777778,
+      "test_pr_auc": 0.8220899470899472,
+      "artifact": "models/module2/dl/MLP.pt"
+    },
+    {
+      "model": "LSTM",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.7105263157894737,
+      "val_precision": 0.574468085106383,
+      "val_recall": 0.9310344827586207,
+      "val_pr_auc": 0.8738483651927526,
+      "test_f1": 0.3137254901960784,
+      "test_precision": 0.19047619047619047,
+      "test_recall": 0.8888888888888888,
+      "test_pr_auc": 0.3362761743067345,
+      "artifact": "models/module2/dl/LSTM.pt"
+    },
+    {
+      "model": "GRU",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.7384615384615385,
+      "val_precision": 0.6666666666666666,
+      "val_recall": 0.8275862068965517,
+      "val_pr_auc": 0.8505015031844556,
+      "test_f1": 0.4,
+      "test_precision": 0.25806451612903225,
+      "test_recall": 0.8888888888888888,
+      "test_pr_auc": 0.47142709142709144,
+      "artifact": "models/module2/dl/GRU.pt"
+    },
+    {
+      "model": "BiLSTM",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.8727272727272727,
+      "val_precision": 0.9230769230769231,
+      "val_recall": 0.8275862068965517,
+      "val_pr_auc": 0.9049750182660141,
+      "test_f1": 0.1891891891891892,
+      "test_precision": 0.1076923076923077,
+      "test_recall": 0.7777777777777778,
+      "test_pr_auc": 0.4580875180300467,
+      "artifact": "models/module2/dl/BiLSTM.pt"
+    },
+    {
+      "model": "TCN",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.819672131147541,
+      "val_precision": 0.78125,
+      "val_recall": 0.8620689655172413,
+      "val_pr_auc": 0.9589229043590097,
+      "test_f1": 0.5,
+      "test_precision": 0.45454545454545453,
+      "test_recall": 0.5555555555555556,
+      "test_pr_auc": 0.48269841269841274,
+      "artifact": "models/module2/dl/TCN.pt"
+    },
+    {
+      "model": "Transformer_Encoder",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.819672131147541,
+      "val_precision": 0.78125,
+      "val_recall": 0.8620689655172413,
+      "val_pr_auc": 0.9463314564040516,
+      "test_f1": 0.9,
+      "test_precision": 0.8181818181818182,
+      "test_recall": 1.0,
+      "test_pr_auc": 0.8691718775052109,
+      "artifact": "models/module2/dl/Transformer_Encoder.pt"
+    },
+    {
+      "model": "TemporalCNN",
+      "category": "Optimized DL",
+      "features": [
+        "frames",
+        "stationary_frames",
+        "mean_speed",
+        "turn_amount",
+        "distance_proxy_m",
+        "is_bus",
+        "cls"
+      ],
+      "val_f1": 0.6666666666666666,
+      "val_precision": 0.5581395348837209,
+      "val_recall": 0.8275862068965517,
+      "val_pr_auc": 0.4871834839773174,
+      "test_f1": 0.48,
+      "test_precision": 0.375,
+      "test_recall": 0.6666666666666666,
+      "test_pr_auc": 0.7443567325920268,
+      "artifact": "models/module2/dl/TemporalCNN.pt"
+    }
+  ],
+  "notes": [
+    "Anti-leakage feature set excluded stationary_ratio and last_speed",
+    "Labels are proxy track labels inside AI City anomaly clips",
+    "Do not use old leaky arena JSON for reported metrics"
+  ]
+}

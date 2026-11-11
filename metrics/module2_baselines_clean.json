@@ -1,0 +1,118 @@
+[
+  {
+    "model": "Logistic_Regression",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9478260869565217,
+      "precision": 0.8285714285714286,
+      "recall": 1.0,
+      "f1": 0.90625,
+      "roc_auc": 0.9891740176423416,
+      "pr_auc": 0.9254602138763083
+    },
+    "test": {
+      "accuracy": 0.967479674796748,
+      "precision": 0.6923076923076923,
+      "recall": 1.0,
+      "f1": 0.8181818181818182,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0000000000000002
+    }
+  },
+  {
+    "model": "Random_Forest",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9826086956521739,
+      "precision": 0.9655172413793104,
+      "recall": 0.9655172413793104,
+      "f1": 0.9655172413793104,
+      "roc_auc": 0.9995990376904571,
+      "pr_auc": 0.9988505747126438
+    },
+    "test": {
+      "accuracy": 0.991869918699187,
+      "precision": 0.9,
+      "recall": 1.0,
+      "f1": 0.9473684210526315,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0000000000000002
+    }
+  },
+  {
+    "model": "XGBoost",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9739130434782609,
+      "precision": 0.9333333333333333,
+      "recall": 0.9655172413793104,
+      "f1": 0.9491525423728814,
+      "roc_auc": 0.9975942261427425,
+      "pr_auc": 0.9933996839466517
+    },
+    "test": {
+      "accuracy": 0.991869918699187,
+      "precision": 0.9,
+      "recall": 1.0,
+      "f1": 0.9473684210526315,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    }
+  },
+  {
+    "model": "LightGBM",
+    "category": "Base ML",
+    "features": [
+      "frames",
+      "stationary_frames",
+      "mean_speed",
+      "turn_amount",
+      "distance_proxy_m",
+      "is_bus",
+      "cls"
+    ],
+    "val": {
+      "accuracy": 0.9826086956521739,
+      "precision": 0.9354838709677419,
+      "recall": 1.0,
+      "f1": 0.9666666666666667,
+      "roc_auc": 0.9987971130713713,
+      "pr_auc": 0.9964299869769548
+    },
+    "test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0
+    }
+  }
+]

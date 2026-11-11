@@ -1,0 +1,119 @@
+{
+  "source": "Student notebook photo transcribed for Lab/viva display",
+  "source_image": "assets/notebook_model_comparison_photo.jpg",
+  "note": "Values below are transcribed from the handwritten notebook table provided by the student. Not regenerated. Live Monitor does not display these scores.",
+  "models": [
+    {
+      "model": "Logistic_Regression",
+      "category": "Base ML",
+      "accuracy": 0.8511,
+      "precision": 0.9182,
+      "recall": 0.7661,
+      "f1": 0.8353,
+      "roc_auc": 0.9013,
+      "selectable": false
+    },
+    {
+      "model": "Random_Forest",
+      "category": "Base ML",
+      "accuracy": 0.8232,
+      "precision": 0.8194,
+      "recall": 0.8276,
+      "f1": 0.821,
+      "roc_auc": 0.9059,
+      "selectable": false
+    },
+    {
+      "model": "Gradient_Boosting",
+      "category": "Base ML",
+      "accuracy": 0.8338,
+      "precision": 0.832,
+      "recall": 0.8304,
+      "f1": 0.8312,
+      "roc_auc": 0.9065,
+      "selectable": false
+    },
+    {
+      "model": "XGBoost",
+      "category": "Base ML",
+      "accuracy": 0.8098,
+      "precision": 0.7879,
+      "recall": 0.8402,
+      "f1": 0.8132,
+      "roc_auc": 0.9032,
+      "selectable": false
+    },
+    {
+      "model": "LSTM_Attention",
+      "category": "Optimized DL",
+      "accuracy": 0.9142,
+      "precision": 0.9215,
+      "recall": 0.9064,
+      "f1": 0.9139,
+      "roc_auc": 0.9541,
+      "selectable": false
+    },
+    {
+      "model": "BiLSTM_Attention",
+      "category": "Optimized DL",
+      "accuracy": 0.9285,
+      "precision": 0.9312,
+      "recall": 0.9248,
+      "f1": 0.928,
+      "roc_auc": 0.9633,
+      "selectable": true
+    },
+    {
+      "model": "TCN_Attention",
+      "category": "Optimized DL",
+      "accuracy": 0.9364,
+      "precision": 0.9401,
+      "recall": 0.9322,
+      "f1": 0.9361,
+      "roc_auc": 0.9712,
+      "selectable": true
+    },
+    {
+      "model": "Transformer_Feature_Attention",
+      "category": "Optimized DL",
+      "accuracy": 0.9458,
+      "precision": 0.9489,
+      "recall": 0.9421,
+      "f1": 0.9455,
+      "roc_auc": 0.9763,
+      "selectable": true
+    },
+    {
+      "model": "Transformer_Encoder_ClassWeighted",
+      "category": "Optimized DL",
+      "accuracy": 0.9512,
+      "precision": 0.9445,
+      "recall": 0.9618,
+      "f1": 0.9531,
+      "roc_auc": 0.9814,
+      "selectable": true
+    },
+    {
+      "model": "GAT_GRU",
+      "category": "Optimized DL",
+      "accuracy": 0.9642,
+      "precision": 0.9678,
+      "recall": 0.9605,
+      "f1": 0.9641,
+      "roc_auc": 0.9886,
+      "selectable": true,
+      "highlighted": true
+    },
+    {
+      "model": "Autoencoder_IsolationForest",
+      "category": "Optimized DL",
+      "accuracy": 0.9395,
+      "precision": 0.9284,
+      "recall": 0.9542,
+      "f1": 0.9411,
+      "roc_auc": 0.9748,
+      "selectable": true,
+      "artifact_status": "missing_on_disk"
+    }
+  ]
+}
