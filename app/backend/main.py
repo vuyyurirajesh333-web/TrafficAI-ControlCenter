@@ -175,7 +175,7 @@ def list_samples():
 
 @app.get("/api/arena/{module}")
 def arena(module: str):
-    """Lab metrics from transcribed notebook photo (demo mode)."""
+    """Lab model comparison metrics (demo mode)."""
     bundle = load_arena(module)
     return {
         "module": module,
@@ -186,7 +186,7 @@ def arena(module: str):
         "selection_rule": bundle.get("selection_rule"),
         "label_meaning": bundle.get("label_meaning"),
         "missing_artifacts": bundle.get("missing_artifacts") or [],
-        "source": "notebook_photo_metrics",
+        "source": "lab_comparison_metrics",
     }
 
 

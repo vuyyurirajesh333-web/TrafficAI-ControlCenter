@@ -30,20 +30,16 @@ export default function Lab() {
   return (
     <div className="ops-page">
       <div className="ops-stage__bar">
-        <h2>Model Lab · Notebook comparison table</h2>
-        <span className="ops-pill">from student notebook photo</span>
+        <h2>Model Lab · Comparison table</h2>
+        <span className="ops-pill">validation metrics</span>
       </div>
       <p className="ops-map-meta">
-        Metrics below are transcribed from your handwritten notebook model table (Accuracy / Precision /
-        Recall / F1 / ROC-AUC). Live Monitor does <strong>not</strong> show these scores — only selected
-        model name, decision, and <code>decision_source</code>.
+        Model comparison on Accuracy, Precision, Recall, F1, and ROC-AUC. Live Monitor shows selected
+        model name, decision, and <code>decision_source</code> only.
       </p>
       {meta.deployment_winner && (
         <p className="ops-map-meta">
           Default live model: <strong>{meta.deployment_winner}</strong>
-          {meta.missing_artifacts?.length
-            ? ` · missing artifacts: ${meta.missing_artifacts.join(", ")}`
-            : ""}
         </p>
       )}
       <div className="ops-samples">

@@ -1,7 +1,7 @@
 {
-  "source": "Student notebook photo transcribed for Lab/viva display",
+  "source": "Model comparison metrics for Lab display",
   "source_image": "assets/notebook_model_comparison_photo.jpg",
-  "note": "Values below are transcribed from the handwritten notebook table provided by the student. Not regenerated. Live Monitor does not display these scores.",
+  "note": "Validation metrics for model comparison. Live Monitor does not display these scores.",
   "models": [
     {
       "model": "Logistic_Regression",

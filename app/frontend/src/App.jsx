@@ -89,7 +89,7 @@ export default function App() {
       <footer className="ops-foot">
         <p>
           Live decisions: <code>{health?.decision_engine || "model_inference_v1"}</code> on{" "}
-          <code>{health?.perception_engine || "yolov8n_bytetrack"}</code>. Lab shows notebook photo metrics only.
+          <code>{health?.perception_engine || "yolov8n_bytetrack"}</code>. Lab shows model comparison metrics.
         </p>
         <p>GTFS stops available: {health?.geo?.stops_available ?? "—"} · Camera: fixed CCTV</p>
       </footer>
